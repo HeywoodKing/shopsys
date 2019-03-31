@@ -1,0 +1,18 @@
+/*自定义名字{属性：值；}*/
+*{margin:0;padding:0;}
+.select{width:679px;height:191px;margin:50px auto 0;/*上 左右 下*/
+        border:1px solid #ddd;
+}
+.select ul li{margin-left:70px;height:20px;list-style:none;/*去掉小圆点*/
+        line-height:24px;margin-top:10px;
+}
+.select ul li dt{float:left;font-size:12px;}
+.select ul li dd{float:left;margin:0px 0px 5px 5px;padding:0 6px;}
+a{text-decoration:none;/*去掉文字下划线*/color:blue;font-size:12px;/*文字大小*/}
+.select ul li dd.selected{background:#f60;}
+.select ul li dd.selected a{color:#fff;}
+.select ul li dd.select-no{color:#666;font-size:10px;}
+.select ul li dd.select-result{background:#f60;}
+.select ul li dd.select-result a{color:#fff;background:url("../images/close.gif") no-repeat 35px 0px;
+        padding-right:20px;
+}

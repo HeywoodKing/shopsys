@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls import include, url
+from django.conf.urls.static import static
+from shopsys.apps.catelog import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('index/', views.index, {'template_name': 'index.html'}, 'index'),
+    path('', include('shopsys.apps.catelog.urls')),
+] + static(settings.MEDIA_URL, document_roor=settings.MEDIA_ROOT)

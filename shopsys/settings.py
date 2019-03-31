@@ -62,8 +62,10 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'shopsys.utils.context_processors.shopsys',
             ],
         },
     },
@@ -131,7 +133,21 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIR = (
+    os.path.join(SETTINGS_DIR, 'static'),
+)
 
+# 用户上传文件位置
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+# 站点设置
+SITE_NAME = '图购'
+META_KEYWORDS = '团购，特接男装，精品女装，计算机图书，双十一特惠'
+META_DESCRIPTION = '''图购 - 西北最大、最安全的网上交易平台，提供各类服饰、美容、家居、数码、
+2亿优惠优质特价商品，先行赔付、假一赔三、7天无理由退换货、数码免费维修等安全交易保障服务，让你全面安心
+享受网上购物乐趣！
+'''
 
 
 
