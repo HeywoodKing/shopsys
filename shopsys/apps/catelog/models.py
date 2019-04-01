@@ -75,8 +75,9 @@ class Product(models.Model):
     	else:
     		return None
 
-    		
 
-
+class Order(object):
+	order_no = models.CharField("订单编号", max_length=32, unique=True)
+		
 
 		
