@@ -25,3 +25,9 @@ urlpatterns = [
     path('index/', views.index, {'template_name': 'index.html'}, 'index'),
     path('', include('shopsys.apps.catelog.urls')),
 ] + static(settings.MEDIA_URL, document_roor=settings.MEDIA_ROOT)
+
+handlers404 = 'shopsys.apps.catelog.views.my_custom_page_not_found_view'
+# handlers500 = 'shopsys.apps.catelog.views.my_custom_error_view'
+# handlers400 = 'shopsys.apps.catelog.views.my_custom_bad_request_view'
+# handlers403 = 'shopsys.apps.catelog.views.my_custom_permission_denied_view'
+

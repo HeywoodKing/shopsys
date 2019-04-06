@@ -3,6 +3,9 @@ from shopsys.apps.catelog import models
 
 # Create your views here.
 
+def my_custom_page_not_found_view():
+	return render(req, '404.html')
+
 def index(req, template_name):
 	return render(req, template_name)
 

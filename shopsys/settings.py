@@ -11,8 +11,10 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import socket
 
-# Build paths insid dirname(os.path.dirname(os.path.abspath(__file__)))
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SETTINGS_DIR = os.path.dirname(__file__)
 
 
@@ -23,9 +25,42 @@ SETTINGS_DIR = os.path.dirname(__file__)
 SECRET_KEY = ')(rm&w63d072)r9d+_+le5)-fhd6zfj!qatmy8o)f3*rs*1w&#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+if socket.gethostbyname('localhost') == 'flack-K43SM':
+    DEBUG = TEMPLATE_DEBUG = True
+    DATABASE_NAME = 'shopsys'
+else:
+    DEBUG = TEMPLATE_DEBUG = False
+    DATABASE_NAME = 'shopdb'
 
-ALLOWED_HOSTS = []
+# SERVER_EMAIL = 'opencoding@hotmail.com'
+# EMAIL_HOST = 'smtp.exmail.hotmail.com'
+# EMAIL_PORT = 25
+
+# 发送邮件到超管
+# ADMINS = (
+#     ('flack', 'opencoding@hotmail.com'),
+# )
+
+# 发送邮件到管理员
+# MANAGERS = (
+#     ('flack', 'opencoding@hotmail.com'),
+# )
+
+
+ALLOWED_HOSTS = ['localhost']
+
+# CACHES = {
+#     'default':{
+#         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+#         'LOCATION': '127.0.0.1:11211',
+#         # 'LOCATION': [
+#         #     '127.0.0.1:11211',
+#         #     '127.0.0.1:11212',
+#         #     '127.0.0.1:11213',
+#         # ],
+#     }
+# }
 
 
 # Application definition
@@ -38,17 +73,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shopsys.apps.catelog',
+    # 'debug_toolbar',
 ]
 
 MIDDLEWARE = [
+    # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.middleware.cache.FetchFromCachedMiddleware',
 ]
 
 ROOT_URLCONF = 'shopsys.urls'
@@ -120,7 +157,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'zh-Hans'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
